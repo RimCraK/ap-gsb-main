@@ -17,6 +17,8 @@
                     <th><?= $this->Paginator->sort('sheetvalidated') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
+                   
+                    
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

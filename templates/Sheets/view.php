@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Sheet $sheet
+ * @var iterable<\App\Model\Entity\Outpackage> $outpackages
  */
 ?>
 <div class="row">
@@ -42,10 +43,19 @@
                     <th><?= __('Sheetvalidated') ?></th>
                     <td><?= $sheet->sheetvalidated ? __('Yes') : __('No'); ?></td>
                 </tr>
+                <tr>
+                    <th></th>
+                    <td></td>
+                </tr>
             </table>
-            <div class="related">
+            
+
+
+
                 <h4><?= __('Related Outpackages') ?></h4>
-                <?php if (!empty($sheet->outpackages)) : ?>
+                
+                <?= $this->Html->link(__('New Outpackage'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+                
                 <div class="table-responsive">
                     <table>
                         <tr>
@@ -64,18 +74,18 @@
                             <td><?= h($outpackages->title) ?></td>
                             <td><?= h($outpackages->body) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Outpackages', 'action' => 'view', $outpackages->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Outpackages', 'action' => 'edit', $outpackages->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Outpackages', 'action' => 'delete', $outpackages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $outpackages->id)]) ?>
+                                <?= $this->Html->link(__('View'), ['controller' => 'OutPackages', 'action' => 'view', $outpackages->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'OutPackages', 'action' => 'edit', $outpackages->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'OutPackages', 'action' => 'delete', $outpackages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $outpackages->id)]) ?>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
-            </div>
-            <div class="related">
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
+                        
+                
                 <h4><?= __('Related Packages') ?></h4>
+                <?= $this->Html->link(__('New Package'), ['action' => 'add'], ['class' => 'button float-right']) ?>
                 <?php if (!empty($sheet->packages)) : ?>
                 <div class="table-responsive">
                     <table>
@@ -103,6 +113,11 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <?php $totaloutpackages = ($outpackages->price) + ($outpackages->price);
+            $totalpackages = ($packages->price) + ($packages->price);
+            $total = ($totalpackages) + ($totaloutpackages);
+                      echo ($total); ?>
         </div>
     </div>
+
 </div>
