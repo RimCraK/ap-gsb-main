@@ -48,7 +48,12 @@ class PackagesTable extends Table
             'targetForeignKey' => 'sheet_id',
             'joinTable' => 'sheets_packages',
         ]);
+        $this->hasMany('SheetsPackages', [
+            'foreignKey' => 'package_id',
+        ]);
+
     }
+   
 
     /**
      * Default validation rules.
@@ -76,4 +81,7 @@ class PackagesTable extends Table
 
         return $validator;
     }
+    
+    
 }
+
