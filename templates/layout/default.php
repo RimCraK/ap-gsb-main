@@ -21,6 +21,7 @@ $identity = $identity ?? [];
 if ($identity) {
 $iduser = $identity["id"];
 $roleuser = $identity["is_superuser"];
+$roleuser_name = $identity["role"];
 }
 
 ?>
@@ -36,37 +37,40 @@ $roleuser = $identity["is_superuser"];
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+    <?= $this->Html->script(['app.js']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
 </head>
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Gsb</span>PHP</a>
+            <a href="<?= $this->Url->build('/') ?>"><span>AP</span>GSB</a>
         </div>
         <div class="top-nav-links">
         <?php
             echo $this->Html->Link('Home', ['plugin' => NULL, 'controller' => 'Pages', 'action' => 'home']);
-            echo $this->Html->Link('My sheets', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'list']);
-            echo $this->Html->Link('Packages', ['plugin' => NULL, 'controller' => 'packages', 'action' => 'index']);
-            echo $this->Html->Link('Out packages', ['plugin' => NULL, 'controller' => 'outpackages', 'action' => 'index']);
-            if(isset($roleuser) && !empty($roleuser)){
+            if(isset($roleuser_name) && !empty($roleuser_name)){
                 if($roleuser == true){
+                    echo $this->Html->Link('My sheets', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'list']);
+                    echo $this->Html->Link('Comptable sheets', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'comptablelist']);
                     echo $this->Html->Link('Admin panel', ['plugin' => NULL, 'controller' => 'Pages', 'action' => 'adminpanel']);
-                    
-    
                     echo $this->Html->Link('Profile', ['plugin' => 'CakeDC/Users','controller' => 'Users', 'action' => 'profile']);
                     echo $this->Html->Link('Logout' , ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout'], ['onclick' => "return confirm('Etes-vous sûr de vouloir vous déconnecter ?')"]);
-                }elseif($roleuser == false){
-                    echo $this->Html->Link('Profile', ['plugin' => 'CakeDC/Users','controller' => 'Users', 'action' => 'profile']);
+                }elseif($roleuser == false){    
+                    if($roleuser_name == "comptable"){
+                        echo $this->Html->Link('Comptable sheets', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'comptablelist']);
+                    }else{
+                        echo $this->Html->Link('My sheets', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'list']);
+                    }
+                    echo $this->Html->Link('My account', ['plugin' => 'CakeDC/Users','controller' => 'Users', 'action' => 'profile']);
                     echo $this->Html->Link('Logout' , ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout'], ['onclick' => "return confirm('Etes-vous sûr de vouloir vous déconnecter ?')"]);
                 }
             }else{
-                echo $this->Html->Link('Login', ['plugin' => 'CakeDC/Users','Controller'=> 'Users','action'=> 'login'] );
+                echo $this->Html->Link('Login', ['plugin' => 'CakeDC/Users','controller'=> 'Users','action'=> 'login'] );
             }
-
         ?>
         </div>
     </nav>
@@ -77,6 +81,11 @@ $roleuser = $identity["is_superuser"];
         </div>
     </main>
     <footer>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
     </footer>
 </body>
 </html>

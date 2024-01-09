@@ -23,11 +23,9 @@ $iduser = $identity["id"]
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('state_id') ?></th>
                     <th><?= $this->Paginator->sort('sheetvalidated') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
-                    
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -35,16 +33,13 @@ $iduser = $identity["id"]
                 <?php foreach ($sheets as $sheet): ?>
                     <tr>
                         <td><?= $this->Number->format($sheet->id) ?></td>
-                        <td><?= $sheet->has('state') ? $this->Html->link($sheet->state->state, ['controller' => 'States', 'action' => 'view', $sheet->state->id]) : '' ?></td>
-                        <td><?= h($sheet->sheetvalidated) ?></td>
+                        <td><?= $sheet->has('state') ? h($sheet->state->state) : '' ?></td>
+                        <?= h($sheet->sheetvalidated) ?>
                         <td><?= h($sheet->created) ?></td>
                         <td><?= h($sheet->modified) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'clientview', $sheet->id]) ?>
-                            <?php if($sheet->state->id === 1): ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $sheet->id]) ?>
-                            <?php endif; ?>
-                            <!-- $this->Form->postLink(__('Delete'), ['action' => 'delete', $sheet->id], ['confirm' => __('Are you sure you want to delete # {0}?', $sheet->id)]) -->
+                            
                         </td>
                     </tr>
                 <?php endforeach; ?>

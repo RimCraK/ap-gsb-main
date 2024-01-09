@@ -38,6 +38,14 @@ class StatesController extends AppController
 
         $this->set(compact('state'));
     }
+    public function compview($id = null)
+    {
+        $state = $this->States->get($id, [
+            'contain' => ['Sheets'],
+        ]);
+
+        $this->set(compact('state'));
+    }
 
     /**
      * Add method
