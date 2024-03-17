@@ -54,18 +54,18 @@
 
 
 
-                <h4><?= __('Related Outpackages') ?></h4>
+                <h4><?= __('Forfaits Associé') ?></h4>
                 
-                <?= $this->Html->link(__('New Outpackage'), ['controller' => 'OutPackages', 'action' => 'add'], ['class' => 'button float-right']) ?>
+                <?= $this->Html->link(__('Nouveau Forfait'), ['controller' => 'OutPackages', 'action' => 'add'], ['class' => 'button float-right']) ?>
                 
                 <div class="table-responsive">
                     <table>
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Date') ?></th>
-                            <th><?= __('Price') ?></th>
-                            <th><?= __('Title') ?></th>
-                            <th><?= __('Body') ?></th>
+                            <th><?= __('Prix') ?></th>
+                            <th><?= __('Titre') ?></th>
+                            <th><?= __('Description') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($sheet->outpackages as $outpackages) : ?>
@@ -76,9 +76,9 @@
                             <td><?= h($outpackages->title) ?></td>
                             <td><?= h($outpackages->body) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'OutPackages', 'action' => 'view', $outpackages->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'OutPackages', 'action' => 'edit', $outpackages->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'OutPackages', 'action' => 'delete', $outpackages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $outpackages->id)]) ?>
+                                <?= $this->Html->link(__('Voir'), ['controller' => 'OutPackages', 'action' => 'view', $outpackages->id]) ?>
+                                <?= $this->Html->link(__('Editer'), ['controller' => 'OutPackages', 'action' => 'edit', $outpackages->id]) ?>
+                                <?= $this->Form->postLink(__('Supprimer'), ['controller' => 'OutPackages', 'action' => 'delete', $outpackages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $outpackages->id)]) ?>
                             </td>
                         </tr>
                                 <?php endforeach; ?>
@@ -86,18 +86,18 @@
                         </div>
                         
                 
-                <h4><?= __('Related Packages') ?></h4>
-                <?= $this->Html->link(__('New Package'), ['controller' => 'Packages', 'action' => 'add'], ['class' => 'button float-right']) ?>
+                <h4><?= __('Forfait Associé') ?></h4>
+                <?= $this->Html->link(__('Nouveau Forfait'), ['controller' => 'Packages', 'action' => 'add'], ['class' => 'button float-right']) ?>
 
                 <?php if (!empty($sheet->packages)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
                             <th><?= __('Id') ?></th>
-                            <th><?= __('Price') ?></th>
-                            <th><?= __('Title') ?></th>
-                            <th><?= __('Body') ?></th>
-                            <th><?= __('Quantity') ?></th>
+                            <th><?= __('Prix') ?></th>
+                            <th><?= __('Titre') ?></th>
+                            <th><?= __('Description') ?></th>
+                            <th><?= __('Quantité') ?></th>
                             <th><?= __('Total') ?></th>
 
 
@@ -126,10 +126,10 @@
                                 
                         
                             <td class="actions">
-                                <?= $this->Form->button(__('Save'), ['type' => 'submit']) ?>
-                                <?= $this->Html->link(__('View'), ['controller' => 'Packages', 'action' => 'view', $packages->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Packages', 'action' => 'edit', $packages->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Packages', 'action' => 'delete', $packages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $packages->id)]) ?>
+                                <?= $this->Form->button(__('Sauvegarder'), ['type' => 'submit']) ?>
+                                <?= $this->Html->link(__('Voir'), ['controller' => 'Packages', 'action' => 'view', $packages->id]) ?>
+                                <?= $this->Html->link(__('Editer'), ['controller' => 'Packages', 'action' => 'edit', $packages->id]) ?>
+                                <?= $this->Form->postLink(__('Supprimer'), ['controller' => 'Packages', 'action' => 'delete', $packages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $packages->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

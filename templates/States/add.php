@@ -8,19 +8,19 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List States'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Listes Etats'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
         <div class="states form content">
             <?= $this->Form->create($state) ?>
             <fieldset>
-                <legend><?= __('Add State') ?></legend>
+                <legend><?= __('Ajouter Etat') ?></legend>
                 <?php
-                    echo $this->Form->control('state');
+                    echo $this->Form->control('Etat');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Soumettre')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

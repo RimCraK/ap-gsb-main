@@ -21,12 +21,12 @@
         <div class="outpackages form content">
             <?= $this->Form->create($outpackage) ?>
             <fieldset>
-                <legend><?= __('Edit Outpackage') ?></legend>
+                <legend><?= __('Editer hors forfait') ?></legend>
                 <?php
                     echo $this->Form->control('date');
-                    echo $this->Form->control('price');
-                    echo $this->Form->control('title');
-                    echo $this->Form->control('body');
+                    echo $this->Form->control('prix');
+                    echo $this->Form->control('titre');
+                    echo $this->Form->control('description');
                     echo $this->Form->control('sheets._ids', [
                         'options' => [$this->request->getParam('pass.0') => $this->request->getParam('pass.0')],
                         'empty' => true,

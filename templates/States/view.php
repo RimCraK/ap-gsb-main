@@ -8,10 +8,10 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit State'), ['action' => 'edit', $state->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete State'), ['action' => 'delete', $state->id], ['confirm' => __('Are you sure you want to delete # {0}?', $state->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List States'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New State'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Editer Etat'), ['action' => 'edit', $state->id], ['class' => 'side-nav-item']) ?>
+            <?= $this->Form->postLink(__('Supprimer Etat'), ['action' => 'delete', $state->id], ['confirm' => __('Are you sure you want to delete # {0}?', $state->id), 'class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Liste Etat'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Nouvelle Etat'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
@@ -19,7 +19,7 @@
             <h3><?= h($state->state) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('State') ?></th>
+                    <th><?= __('Etat') ?></th>
                     <td><?= h($state->state) ?></td>
                 </tr>
                 <tr>
@@ -28,17 +28,17 @@
                 </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related Sheets') ?></h4>
+                <h4><?= __('Fiches Associé') ?></h4>
                 <?php if (!empty($state->sheets)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
                             <th><?= __('Id') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('State Id') ?></th>
-                            <th><?= __('Sheetvalidated') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
+                            <th><?= __('Id Utilisateur ') ?></th>
+                            <th><?= __('Id Etat') ?></th>
+                            <th><?= __('Fiche Validé') ?></th>
+                            <th><?= __('Créer') ?></th>
+                            <th><?= __('Modifier') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($state->sheets as $sheets) : ?>
@@ -50,9 +50,9 @@
                             <td><?= h($sheets->created) ?></td>
                             <td><?= h($sheets->modified) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Sheets', 'action' => 'view', $sheets->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Sheets', 'action' => 'edit', $sheets->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Sheets', 'action' => 'delete', $sheets->id], ['confirm' => __('Are you sure you want to delete # {0}?', $sheets->id)]) ?>
+                                <?= $this->Html->link(__('Voir'), ['controller' => 'Sheets', 'action' => 'view', $sheets->id]) ?>
+                                <?= $this->Html->link(__('Editer'), ['controller' => 'Sheets', 'action' => 'edit', $sheets->id]) ?>
+                                <?= $this->Form->postLink(__('Supprimer'), ['controller' => 'Sheets', 'action' => 'delete', $sheets->id], ['confirm' => __('Are you sure you want to delete # {0}?', $sheets->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

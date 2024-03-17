@@ -83,6 +83,41 @@ class SheetsController extends AppController
         $this->set(compact('sheet', 'users', 'states', 'outpackages', 'packages'));
     }
 
+
+    public function addadmin()
+    {
+        $sheet = $this->Sheets->newEmptyEntity();
+    
+        if ($this->request->is('post')) {
+            $sheet = $this->Sheets->patchEntity($sheet, $this->request->getData());
+    
+            if ($this->Sheets->save($sheet)) {
+                // Récupérez l'id de la nouvelle feuille
+                $sheetId = $sheet->id;
+    
+                // Créez une nouvelle entrée dans la table sheet_packages avec package_id = 1
+                $this->createSheetPackage($sheetId, 1, 0);
+    
+                // Créez une autre entrée dans la table sheet_packages avec package_id = 2
+                $this->createSheetPackage($sheetId, 2, 0);
+    
+                // Créez une autre entrée dans la table sheet_packages avec package_id = 3
+                $this->createSheetPackage($sheetId, 4, 0);
+    
+                $this->Flash->success(__('The sheet has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The sheet could not be saved. Please, try again.'));
+            }
+        }
+    
+            $users = $this->Sheets->Users->find('list', ['limit' => 200])->all();
+            $states = $this->Sheets->States->find('list', ['limit' => 200])->all();
+            $outpackages = $this->Sheets->Outpackages->find('list', ['limit' => 200])->all();
+            $packages = $this->Sheets->Packages->find('list', ['limit' => 200])->all();
+            $this->set(compact('sheet', 'users', 'states', 'outpackages', 'packages'));
+        }
+
     private function createSheetPackage($sheetId, $packageId, $quantity)
 {
     $sheetPackagesTable = new SheetsPackagesTable();

@@ -13,7 +13,7 @@
         <div class="outpackages form content">
             <?= $this->Form->create($outpackage) ?>
             <fieldset>
-                <legend><?= __('Add Outpackage') ?></legend>
+                <legend><?= __('Ajouter hors forfaits') ?></legend>
                 <?php
                     
                     echo $this->Form->control('price');
@@ -29,7 +29,7 @@
 
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Soumettre')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

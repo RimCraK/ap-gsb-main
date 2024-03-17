@@ -17,9 +17,9 @@ $total_outpackage = 0;
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?php if ($sheet->state->id == 1 && !$sheet->sheetvalidated): ?>
-                <?= $this->Form->postLink(__('Delete Sheet'), ['action' => 'delete', $sheet->id], ['confirm' => __('Are you sure you want to delete # {0}?', $sheet->id), 'class' => 'side-nav-item']) ?>
+                <?= $this->Form->postLink(__('Supprimer la fiche'), ['action' => 'delete', $sheet->id], ['confirm' => __('Are you sure you want to delete # {0}?', $sheet->id), 'class' => 'side-nav-item']) ?>
             <?php endif; ?>
-            <?= $this->Html->link(__('List Sheets'), ['action' => 'list'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Liste Fiches'), ['action' => 'list'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
@@ -27,47 +27,47 @@ $total_outpackage = 0;
             <h3><?= h($sheet->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Last name') ?></th>
+                    <th><?= __('Nom') ?></th>
                     <td><?= $sheet->user->last_name ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('First name') ?></th>
+                    <th><?= __('Prénom') ?></th>
                     <td><?= $sheet->user->first_name ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('State') ?></th>
+                    <th><?= __('Etat') ?></th>
                     <td><?= $sheet->state->state ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('N° utilisateur') ?></th>
                     <td><?= $this->Number->format($sheet->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created') ?></th>
+                    <th><?= __('Date De création') ?></th>
                     <td><?= h($sheet->created) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified') ?></th>
+                    <th><?= __('Date De Modification') ?></th>
                     <td><?= h($sheet->modified) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Sheetvalidated') ?></th>
-                    <td><?= $sheet->sheetvalidated ? __('Yes') : __('No'); ?></td>
+                    <th><?= __('Fiche Validé') ?></th>
+                    <td><?= $sheet->sheetvalidated ? __('OUI') : __('NON'); ?></td>
                 </tr>
             </table>
             
             <div class="related">
-                <h4 class="float-left"><?= __('Related Packages') ?></h4>
+                <h4 class="float-left"><?= __('Forfait Associé') ?></h4>
                 <?= $this->Form->create($sheet, ['url' => ['controller' => 'Sheets', 'action' => 'clientview', $sheet->id]]) ?>
                 <?php if (!empty($sheet->packages)) : ?>
                     <div class="table-responsive">
                         <table>
                             <tr>
-                                <th><?= __('Id') ?></th>
-                                <th><?= __('Title') ?></th>
-                                <th><?= __('Body') ?></th>
-                                <th><?= __('Quantity') ?></th>
-                                <th><?= __('Price') ?></th>
+                                <th><?= __('N° Utilisateur') ?></th>
+                                <th><?= __('Titre') ?></th>
+                                <th><?= __('Description') ?></th>
+                                <th><?= __('Quantité') ?></th>
+                                <th><?= __('Prix') ?></th>
                             </tr>
                             <?php foreach ($sheet->packages as $package) : ?>
                                 <tr>
@@ -102,20 +102,20 @@ $total_outpackage = 0;
                         <?php if ($sheet->state->id == 1 && !$sheet->sheetvalidated): ?>
                             <td>
                                 <?= $this->Form->hidden('action', ['value' => '']) ?>
-                                <?= $this->Form->button('Save New Quantity', ['type' => 'submit']) ?>
+                                <?= $this->Form->button('Enregistrer Les Quantités', ['type' => 'submit']) ?>
                             </td> 
                         <?php endif; ?>
-                        <?= '<strong style="margin-left: 1rem">Total package : </strong>'.$total_package." €" ?>
+                        <?= '<strong style="margin-left: 1rem">Total Forfait : </strong>'.$total_package." €" ?>
                     </div>
                 <?php endif; ?>
                 <?= $this->Form->end() ?>
                 
             </div>
             <div class="related">
-                <h4 class="float-left"><?= __('Related Outpackages') ?></h4>
+                <h4 class="float-left"><?= __('Hors forfait associé') ?></h4>
                 <?php if($sheet->state->id == 1): ?>
                     <?php if($sheet->sheetvalidated == false): ?>
-                        <?= $this->Html->link('New Outpackage', ['controller' => 'Outpackages', 'action' => 'add', $sheet->id], ['class' => 'button float-right']) ?>
+                        <?= $this->Html->link('Ajouter Nouveau Hors Forfait', ['controller' => 'Outpackages', 'action' => 'add', $sheet->id], ['class' => 'button float-right']) ?>
                     <?php endif; ?>
                 <?php endif; ?>
                 <?php if (!empty($sheet->outpackages)) : ?>
@@ -123,11 +123,11 @@ $total_outpackage = 0;
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('Id') ?></th>
+                            <th><?= __('N° utilisateur') ?></th>
                             <th><?= __('Date') ?></th>
-                            <th><?= __('Price') ?></th>
-                            <th><?= __('Title') ?></th>
-                            <th><?= __('Body') ?></th>
+                            <th><?= __('Prix') ?></th>
+                            <th><?= __('Titre') ?></th>
+                            <th><?= __('Description') ?></th>
                             <?php if($sheet->state->id == 1): ?>
                                 <?php if($sheet->sheetvalidated == false): ?>
                                     <th class="actions"><?= __('Actions') ?></th>
@@ -153,7 +153,7 @@ $total_outpackage = 0;
                             <?php if($sheet->state->id == 1): ?>
                                 <?php if($sheet->sheetvalidated == false): ?>
                                     <td class="actions">
-                                        <?= $this->Form->postLink(__('Delete'), ['controller' => 'Outpackages', 'action' => 'deleteoutpackages', $outpackages->id, $sheet->id], ['confirm' => __('Are you sure you want to delete # {0}?', $outpackages->id)]) ?>
+                                        <?= $this->Form->postLink(__('Supprimer'), ['controller' => 'Outpackages', 'action' => 'deleteoutpackages', $outpackages->id, $sheet->id], ['confirm' => __('Are you sure you want to delete # {0}?', $outpackages->id)]) ?>
 
                                     </td>
                                 <?php endif; ?>
@@ -169,7 +169,7 @@ $total_outpackage = 0;
                 <?php endif; ?>
                 
                 
-                <?= '<div style="margin-top: 1rem"><strong>Total outpackage : </strong>'.$total_outpackage." €</div>" ?>
+                <?= '<div style="margin-top: 1rem"><strong>Total Hors Forfait : </strong>'.$total_outpackage." €</div>" ?>
                     
                 <?= '</br><strong>Total : </strong>'.$total = $total_outpackage + $total_package." €" ?>
                 
