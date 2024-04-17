@@ -28,6 +28,7 @@ class SheetsController extends AppController
         $this->set(compact('sheets'));
     }
 
+    
     /**
      * View method
      *
@@ -35,6 +36,31 @@ class SheetsController extends AppController
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+
+     public function justificatifimpôt()
+     {
+ $this->paginate = [
+            'contain' => ['Users', 'States'],
+        ];
+
+        
+        $sheets = $this->paginate($this->Sheets->find('all'));
+
+        $this->set(compact('sheets'));
+     }
+     public function sommetotal()
+     {
+        $this->paginate = [
+            'contain' => ['Users', 'States'],
+        ];
+
+       
+        
+        
+        $sheets = $this->paginate($this->Sheets->find('all'));
+
+        $this->set(compact('sheets'));
+     }
     public function view($id = null)
     {
         $sheet = $this->Sheets->get($id, [
@@ -233,15 +259,19 @@ class SheetsController extends AppController
 }
 public function clientview($id = null)
 {
-    
+    // Récupère la feuille avec toutes ses relations
     $sheet = $this->Sheets->get($id, [
         'contain' => ['Users', 'States', 'Outpackages', 'Packages'],
     ]);
 
+    // Vérifie si la requête est de type POST
     if ($this->request->is('post')) {
+        // Récupère les données postées
         $postData = $this->request->getData();
 
+        // Vérifie si les données des packages sont présentes
         if (isset($postData['packages'])) {
+            // Parcourt chaque package posté
             foreach ($postData['packages'] as $packageId => $packageData) {
                 // Vérifie que la quantité est définie
                 if (isset($packageData['quantity'])) {
@@ -252,16 +282,21 @@ public function clientview($id = null)
                         ['quantity' => $quantity],
                         ['sheet_id' => $id, 'package_id' => $packageId]
                     );
-                    
                 }
             }
+            // Affiche un message de succès
             $this->Flash->success(__('La quantité a été mise à jour.'));
+            // Redirige vers la vue clientview avec l'ID de la feuille
             return $this->redirect(['action' => 'clientview', $id]);
         }
     }
 
+    // Envoie la feuille à la vue
     $this->set(compact('sheet'));
 }
+
+
+
 public function comptableview($id = null)
 {
     

@@ -73,7 +73,6 @@ $total_outpackage = 0;
                                 <tr>
                                     <td><?= h($package->id) ?></td>
                                     
-                                    
                                     <td><?= h($package->title) ?></td>
                                     <!-- Limiter la taille du champ body à 100 caractères -->
                                     <td title="<?= h($package->body) ?>">
@@ -165,6 +164,8 @@ $total_outpackage = 0;
                     </table>
                     
                 </div>
+
+
               
                 <?php endif; ?>
                 

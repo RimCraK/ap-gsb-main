@@ -56,12 +56,14 @@ $roleuser_name = $identity["role"];
                 if($roleuser == true){
                     echo $this->Html->Link('Mes Fiches', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'list']);
                     echo $this->Html->Link('Fiches Comptable', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'comptablelist']);
+                    echo $this->Html->Link('Justifiactif impôt', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'justificatifimpôt']);
                     echo $this->Html->Link('Panneau Admin', ['plugin' => NULL, 'controller' => 'Pages', 'action' => 'adminpanel']);
                     echo $this->Html->Link('Profil', ['plugin' => 'CakeDC/Users','controller' => 'Users', 'action' => 'profile']);
                     echo $this->Html->Link('Deconnexion' , ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout'], ['onclick' => "return confirm('Etes-vous sûr de vouloir vous déconnecter ?')"]);
                 }elseif($roleuser == false){    
                     if($roleuser_name == "comptable"){
                         echo $this->Html->Link('Fiches Comptables', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'comptablelist']);
+                        echo $this->Html->Link('Justifiactif impôt', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'justificatifimpôt']);
                     }else{
                         echo $this->Html->Link('Mes Fiches', ['plugin' => NULL, 'controller' => 'Sheets', 'action' => 'list']);
                     }

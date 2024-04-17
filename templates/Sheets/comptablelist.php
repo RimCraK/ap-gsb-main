@@ -38,7 +38,7 @@ $iduser = $identity["id"]
                         <td><?= h($sheet->modified) ?></td>
                         <td class="display-flex"><?php if($sheet->sheetvalidated == 1){echo "<div class='tag success'>Validé</div>";}else{echo "<div class='tag error'>Pas Validé</div>";} ?></td>
                         <td class="actions">
-                            <?php if($sheet->state->id > 1){echo $this->Html->link(__('Voir'), ['action' => 'comptableview', $sheet->id]);}elseif($sheet->state->id == 1){echo $this->Html->link(__('View'), ['action' => 'comptableview', $sheet->id]);}else{echo $this->Html->link(__('Edit'), ['action' => 'clientview', $sheet->id]);}  ?>
+                            <?php if($sheet->state->id > 1){echo $this->Html->link(__('Voir'), ['action' => 'comptableview', $sheet->id]);}elseif($sheet->state->id == 1){echo $this->Html->link(__('Voir'), ['action' => 'comptableview', $sheet->id]);}else{echo $this->Html->link(__('Edit'), ['action' => 'clientview', $sheet->id]);}  ?>
                             
                             <!-- $this->Form->postLink(__('Delete'), ['action' => 'delete', $sheet->id], ['confirm' => __('Are you sure you want to delete # {0}?', $sheet->id)]) -->
                         </td>
